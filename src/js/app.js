@@ -1,6 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+class ToolHeader extends React.Component {
+
+    render() {
+        return <h1>{this.props.children}</h1>;
+    }
+
+}
+
 class ColorTool extends React.Component {
 
     constructor(props) {
@@ -39,7 +47,7 @@ class ColorTool extends React.Component {
     render() {
 
         return <div>
-            <h1>{this.props.header}</h1>
+            <ToolHeader>{this.props.header}</ToolHeader>
             <ul>
                 {this.state.colorList.map(color => <li key={color}>{color}</li>)}
             </ul>
@@ -64,6 +72,10 @@ const colors = [
 ReactDOM.render(
     <ColorTool header={header} colorList={colors} />,
     document.querySelector('main'));
+
+const colorToolComponent = new ColorTool({ header, colorList: colors });
+
+console.dir(colorToolComponent.render());
 
 
 
